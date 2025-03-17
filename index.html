@@ -9,6 +9,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Jacquard+12+Charted&family=Rubik+80s+Fade&family=Sixtyfour+Convergence&family=VT323&display=swap" rel="stylesheet">
     <style>
+      * {
+        box-sizing: border-box
+      }
+
+      .mySlides {
+        display: none
+      }
+
+      img {
+        vertical-align: middle;
+      }
+
       body {
         background-image: url('dithered.png');
         background-repeat: repeat;
@@ -16,7 +28,7 @@
 
         /* Slideshow container */
         .slideshow-container {
-          max-width: 500px;
+          max-width: 1000px;
           position: relative;
           margin: auto;
         }
@@ -63,6 +75,8 @@
       }
 
       div.container {
+        border: 4px purple;
+        border-style: outset;
         width: 57em;
         height: 60em;
         background-color: rgba(255, 255, 255, 0.7);
@@ -111,6 +125,7 @@
 
 
       #navba {
+
         list-style-type: none;
         margin: 0;
         padding: 0;
@@ -127,7 +142,8 @@
       }
 
       li a {
-
+        border: 4px purple;
+        border-style: outset;
         display: block;
         width: 10em;
         margin: .5em;
@@ -160,76 +176,76 @@
     </style>
   </head>
   <body>
-<div class="container">
-    <div class="slideshow-container">
-      <div class="mySlides fade">
-        <div class="numbertext">1 / 4</div>
-        <img src="highpark2.png" style="width:90%">
-        <div class="text">Caption Text</div>
+    <div class="container">
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 4</div>
+          <img src="highpark2.png" alt="image of irises on the shore of Grenadier Pond." style="width:100%">
+          <div class="text">Caption Text</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 4</div>
+          <img src="millvalley.png" alt="Undergrowth at Mill Valley Park." style="width:100%">
+          <div class="text">Caption Text</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 4</div>
+          <img src="Lakeshore.png" alt="Lesser scaup surrounded by mallards and geese." style="width:90%">
+          <div class="text">Caption Two</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">4 / 4</div>
+          <img src="bancro.png" alt="view of a part of the Madawaska from the top of a hill." style="width:90%">
+          <div class="text">Caption Three</div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+
       </div>
-      <div class="mySlides fade">
-        <div class="numbertext">2 / 4</div>
-        <img src="millvalley.png" style="width:90%">
-        <div class="text">Caption Text</div>
+      <br>
+
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
       </div>
 
-      <div class="mySlides fade">
-        <div class="numbertext">2 / 4</div>
-        <img src="Lakeshore.png" style="width:90%">
-        <div class="text">Caption Two</div>
-      </div>
+      <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
-      <div class="mySlides fade">
-        <div class="numbertext">3 / 4</div>
-        <img src="bancro.png" style="width:100%">
-        <div class="text">Caption Three</div>
-      </div>
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
 
-      <a class="prev" onclick="plusSlides(-1)">❮</a>
-      <a class="next" onclick="plusSlides(1)">❯</a>
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
 
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+          if (n > slides.length) {
+            slideIndex = 1
+          }
+          if (n < 1) {
+            slideIndex = slides.length
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+
+          slides[slideIndex - 1].style.display = "block";
+          dots[slideIndex - 1].className += " active";
+        }
+      </script>
     </div>
-    <br>
-
-    <div style="text-align:center">
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
-      <span class="dot" onclick="currentSlide(3)"></span>
-    </div>
-
-    <script>
-      let slideIndex = 1;
-      showSlides(slideIndex);
-
-      function plusSlides(n) {
-        showSlides(slideIndex += n);
-      }
-
-      function currentSlide(n) {
-        showSlides(slideIndex = n);
-      }
-
-      function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        let dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {
-          slideIndex = 1
-        }
-        if (n < 1) {
-          slideIndex = slides.length
-        }
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-      }
-    </script>
- </div>
 
 
     <ul id="navba">
